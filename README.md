@@ -41,4 +41,4 @@ Install a package using the command: npm install <name-of-package>
 
 Node.js supports two module systems for organizing and sharing code. These are
 - CommonJS modules
-- ECMAScript modules
+- ECMAScript modules etc
