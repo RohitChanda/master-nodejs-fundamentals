@@ -73,5 +73,21 @@ app.use(cookieParser());
 // expire time in milliseconds
 res.cookie('my_cookie', 'cookie_value',  {expire : 24 * 60 * 60 * 1000 });
 ```
+- We can also set cookie only over HttpOnly.This flag tells the browsers to not allow client-side script access to the Cookie.
+  ```js
+  res.cookie('my_cookie' , 'cookie_value', { HttpOnly: true});
+  ```
+- We can tell express to use https encrypted channel to exchange cookie data with secure flag.
+  ```js
+  res.cookie('my_cookie , 'cookie_value', { secure: true});
+  ```
+
+### Read Cookies
+We can access Cookies via request object, ```req.cookies```.
+
+### Delete Cookie
+ ```js
+res.clearCookie('my_cookie');
+```
 
 
