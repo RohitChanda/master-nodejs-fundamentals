@@ -99,6 +99,7 @@ To fully utilize the potential of **multi-core systems** and enhance the perform
 - Clustering in Node.js involves creating **multiple worker processes** that share the incoming workload. 
 - Each worker process runs in its own event loop, utilizing the available CPU cores.
 - The **master process** manages the worker processes, distributes incoming requests, and handles process failures.
+- All Worker Process Share the same port
 
 ### Benefits of Clustering:
 - **Improved Performance:** Clustering enables parallel processing of requests across multiple cores, leading to improved performance
@@ -120,6 +121,7 @@ app.get("/", (req, res) => {
   console.log(numCpu);
   for (let i = 0; i < 1e8; i++) {}
   res.send("Hello from Node");
+  cluster.worker.kill(); // kill a worker
 });
 
 if (cluster.isMaster) {
@@ -142,3 +144,8 @@ if (cluster.isMaster) {
 
 
 ```
+- When any of the workers die the cluster module will emit the 'exit' event.
+- To kill a worker use the kill method
+  ```js
+  cluster.worker.kill();
+  ```
