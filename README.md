@@ -149,3 +149,33 @@ if (cluster.isMaster) {
   ```js
   cluster.worker.kill();
   ```
+
+## 🚀 PM2
+PM2 is a production-grade process manager for Node.js applications that allows you to keep applications alive forever, reload them without downtime, and facilitate common system admin tasks. It provides features such as:
+- Easy process management
+- Auto-restart on crashes
+- Log management
+- Application monitoring
+
+### install pm2 globally
+```
+npm install -g pm2
+```
+
+### pm2 commands
+- **Starting Your Application with PM2**
+  ```
+  pm2 start src/index.js
+  ```
+- **Stopping a Process**
+  ```
+  pm2 stop <process_name>
+  ```
+- **Re-staring a Process**
+  ```
+  pm2 restart <process_name>
+  ```
+- **Deleting a process**
+  ```
+  pm2 delete <process_name>
+  ```
