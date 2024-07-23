@@ -105,3 +105,40 @@ To fully utilize the potential of **multi-core systems** and enhance the perform
 - **Scalability:** Clustering enhances the scalability of Node.js applications by **handling concurrent requests in parallel**. As the workload increases, additional worker processes can be created dynamically to distribute the load effectively.
 - **Fault Tolerance:** If a worker process crashes or becomes unresponsive, the master process can detect the failure and restart the worker process automatically. This fault tolerance ensures that the application remains available even in the presence of process failures.
 
+```js
+const cluster = require("cluster");
+const express = require("express");
+const os = require("os");
+
+const numCpu = os.cpus().length;
+// const numCpu = os.availableParallelism(); //both are same
+
+const app = express();
+const port = 8000;
+
+app.get("/", (req, res) => {
+  console.log(numCpu);
+  for (let i = 0; i < 1e8; i++) {}
+  res.send("Hello from Node");
+});
+
+if (cluster.isMaster) {
+  console.log(`Master process ${process.pid} is running`);
+
+  //create child worker process based on cpus
+  for (let i = 0; i < numCpu; i++) {
+    cluster.fork(); // create worker
+  }
+
+  cluster.on("exit", (worker, code, signal) => {
+    console.log(`Worker process ${worker.process.pid} died. Restarting...`);
+    cluster.fork();
+  });
+} else {
+  app.listen(port, () => {
+    console.log(`Example app ${process.pid} - listening http://127.0.0.1:${port}`);
+  });
+}
+
+
+```
