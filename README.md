@@ -90,7 +90,18 @@ We can access Cookies via request object, ```req.cookies```.
 res.clearCookie('my_cookie');
 ```
 
-### 🚀 Cluster in Node
+## 🚀 Cluster in Node
+Clusters of Node.js processes can be used to run **multiple instances** of Node.js that can distribute workloads among their application threads.
 
+To fully utilize the potential of **multi-core systems** and enhance the performance of Node.js applications, we can implement clustering using the built-in cluster module. Clustering allows us to create **multiple worker processes** to handle incoming requests, resulting in improved performance and better utilization of system resources.
 
+### Understanding Clustering
+- Clustering in Node.js involves creating **multiple worker processes** that share the incoming workload. 
+- Each worker process runs in its own event loop, utilizing the available CPU cores.
+- The **master process** manages the worker processes, distributes incoming requests, and handles process failures.
+
+### Benefits of Clustering:
+- **Improved Performance:** Clustering enables parallel processing of requests across multiple cores, leading to improved performance
+- **Scalability:** Clustering enhances the scalability of Node.js applications by **handling concurrent requests in parallel**. As the workload increases, additional worker processes can be created dynamically to distribute the load effectively.
+- **Fault Tolerance:** If a worker process crashes or becomes unresponsive, the master process can detect the failure and restart the worker process automatically. This fault tolerance ensures that the application remains available even in the presence of process failures.
 
