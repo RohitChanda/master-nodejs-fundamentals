@@ -42,3 +42,36 @@ Install a package using the command: npm install <name-of-package>
 Node.js supports two module systems for organizing and sharing code. These are
 - CommonJS modules
 - ECMAScript modules
+
+
+## 🚀 MVC pattern
+- MVC (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software's business logic and display.
+- The three parts of the MVC software design pattern can be described as follows:
+  - **Model** : Manages data.
+  - **View** : Handles layout and display.
+  - **Controller** : Request-response handler
+
+## 🚀 Handle Cookies In Node.js
+Cookies are small data that are stored on a client side and sent to the client along with server requests. Cookies have various functionality, they can be used for maintaining sessions and adding user-specific features in your web app. For this, we will use **cookie-parser** module of npm which provides middleware for parsing of cookies.
+
+### Use as a middleware
+```js
+const express = require('express');
+
+const cookieParser = require('cookie-parser');
+
+const app = express();
+
+// adding cookieParser to middleware stack
+
+app.use(cookieParser());
+```
+
+### Set Cookie
+``` res.cookie(name_of_cookie, value_of_cookie); ```
+```js
+// expire time in milliseconds
+res.cookie('my_cookie', 'cookie_value',  {expire : 24 * 60 * 60 * 1000 });
+```
+
+
