@@ -179,3 +179,8 @@ npm install -g pm2
   ```
   pm2 delete <process_name>
   ```
+- **Monitoring Your Application**
+  ```
+  pm2 monit
+  ```
+- [check more](https://medium.com/@ayushnandanwar003/deploying-node-js-applications-using-pm2-a-detailed-guide-b8b6d55dfc88)
