@@ -237,6 +237,8 @@ writerStream.on('error', function(err){
 
 console.log("Program Ended");
 ```
+- Stream added a header property **Transfer-Encoding: chunked** in response header.
+
 ### Piping the Streams:
 Piping is a mechanism where we provide the output of one stream as the input to another stream. It is normally used to get data from one stream and to pass the output of that stream to another stream. There is no limit on piping operations.
 ```js
@@ -253,5 +255,18 @@ const writerStream = fs.createWriteStream('output.txt');
 readerStream.pipe(writerStream);
 
 console.log("Program Ended");
+```
+### Chaining the Streams:
+Chaining is a mechanism to connect the output of one stream to another stream and create a chain of multiple stream operations. It is normally used with piping operations.
+```js
+const fs = require("fs");
+const zlib = require('zlib');
 
+// fs read stream --(pipe)--> zip --(pipe)-> fs write stream
+// so when the file is reading ,in that time we will automatically converted into zip and write into another file
+fs.createReadStream("./sample.txt").pipe(
+  zlib.createGzip().pipe(fs.createWriteStream("./destination.txt"))
+);
+  
+console.log("File Compressed.");
 ```
