@@ -191,3 +191,67 @@ Streams are objects that let you read data from a source or write data to a dest
 - **Readable**: streams from which data can be read.
 - **Duplex**: streams that are both Readable and Writable.
 - **Transform**: Duplex streams that can modify or transform the data as it is written and read.
+
+Each type of Stream is an EventEmitter instance and throws several events at different instance of times. For example, some of the commonly used events are −
+- **data**: This event is fired when there is data is available to read.
+- **end**: This event is fired when there is no more data to read.
+- **error**: This event is fired when there is any error receiving or writing data.
+- **finish**: This event is fired when all the data has been flushed to underlying system.
+
+### Readable Stream
+```js
+app.get("/data", (req, res) => {
+  const readerStream = fs.createReadStream("./sample.txt", "utf-8");
+  readerStream.on("data", (chunk) => {
+    res.write(chunk);
+  });
+  readerStream.on("end", () => res.end()); //This event is fired when there is no more data to read
+  readerStream.on("error", function (err) {
+    console.log(err.stack);
+  });
+});
+```
+
+### Writable Stream
+```js
+const fs = require("fs");
+const data = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s;
+
+// Create a writable stream
+const writerStream = fs.createWriteStream('output.txt');
+
+// Write the data to stream with encoding to be utf8
+writerStream.write(data,'UTF8');
+
+// Mark the end of file
+writerStream.end();
+
+// Handle stream events --> finish, and error
+writerStream.on('finish', function() {
+   console.log("Write completed.");
+});
+
+writerStream.on('error', function(err){
+   console.log(err.stack);
+});
+
+console.log("Program Ended");
+```
+### Piping the Streams:
+Piping is a mechanism where we provide the output of one stream as the input to another stream. It is normally used to get data from one stream and to pass the output of that stream to another stream. There is no limit on piping operations.
+```js
+const fs = require("fs");
+
+// Create a readable stream
+const readerStream = fs.createReadStream('input.txt');
+
+// Create a writable stream
+const writerStream = fs.createWriteStream('output.txt');
+
+// Pipe the read and write operations
+// read input.txt and write data to output.txt
+readerStream.pipe(writerStream);
+
+console.log("Program Ended");
+
+```
