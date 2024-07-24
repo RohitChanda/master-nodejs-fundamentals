@@ -184,3 +184,10 @@ npm install -g pm2
   pm2 monit
   ```
 - [check more](https://medium.com/@ayushnandanwar003/deploying-node-js-applications-using-pm2-a-detailed-guide-b8b6d55dfc88)
+
+## Node.js Stream
+Streams are objects that let you read data from a source or write data to a destination in **continuous fashion**. There are four types of streams.
+- **Writable**: streams to which data can be written.
+- **Readable**: streams from which data can be read.
+- **Duplex**: streams that are both Readable and Writable.
+- **Transform**: Duplex streams that can modify or transform the data as it is written and read.
