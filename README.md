@@ -107,8 +107,75 @@ This is the second statement
 ![image](https://github.com/user-attachments/assets/585147a8-7d21-456a-bae7-cd9421a5629d)
 [Check More](https://www.geeksforgeeks.org/node-js-event-loop/#what-is-the-event-loop)
 
+### difference between process.nextTick() and setImmediate()
 
-    
+#### process.nextTick()
+The process.nextTick() method adds the callback function to the start of the next event queue. It is to be noted that, at the start of the program process.nextTick() method is called for the first time before the event loop is processed.
+Its processed at the start of the event loop and between each phase of the event loop.
+
+#### setImmediate()
+The setImmediate() method is used to execute a function right after the current event loop finishes. It is callback function is placed in the check phase of the next event queue.
+
+**Example**
+```js
+/**
+ * setImmediate() and process.nextTick()
+ */
+setImmediate(() => {
+  console.log("1st Immediate");
+});
+
+setImmediate(() => {
+  console.log("2nd Immediate");
+});
+
+process.nextTick(() => {
+  console.log("1st Process");
+});
+
+process.nextTick(() => {
+  console.log("2nd Process");
+});
+
+// First event queue ends here
+console.log("Program Started");
+
+// Output
+Program Started
+1st Process
+2nd Process
+1st Immediate
+2nd Immediate
+```
+- On any given context process.nextTick() has higher priority over setImmediate().
+- If process.nextTick() is called in a given phase, all the callbacks passed to process.nextTick() will be resolved before the event loop continues. This will block the event loop and create I/O Starvation if process.nextTick() is called recursively.
+ ```js
+let count = 0
+const cb = () => {
+    console.log(`Processing nextTick cb ${++count}`)
+    process.nextTick(cb)
+}
+setImmediate(() => console.log('setImmediate is called'))
+setTimeout(() => console.log('setTimeout executed'), 100)
+process.nextTick(cb)
+console.log('Start')
+ ```
+**Output** 
+```
+Start
+Processing nextTick cb 1
+Processing nextTick cb 2
+Processing nextTick cb 3
+Processing nextTick cb 4
+Processing nextTick cb 5
+Processing nextTick cb 6
+Processing nextTick cb 7
+Processing nextTick cb 8
+Processing nextTick cb 9
+Processing nextTick cb 10
+...
+```
+- Unlike process.nextTick(), recursive calls to setImmediate() won't block the event loop, because every recursive call is executed only on the next event loop iteration.
 
 
 
