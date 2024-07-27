@@ -285,15 +285,29 @@ By implementing event-driven, asynchronous, and non-blocking models, NGINX uses 
 
 ### Benefits of NGINX
 Using NGINX comes with several benefits, including the following:
-- Reduces the waiting time to load a website. You don’t have to worry about high latency on your websites, therefore providing a good user experience. 
-- Speeds up performance by routing traffic to web servers in a way that increases the overall speed. This feature provides a good browsing experience to your users.
-- Acts as an inexpensive and robust load balancer.
-- Offers scalability and the ability to handle concurrent requests. 
+- Offers scalability and the ability to handle concurrent requests, It can handle 10,000 concurrent requests. 
+- Cache HTTP requests.
+- Acts as a robust load balancer.
+- Acts as a reverse proxy.
+- Acts as an API gateway.
+- Serve and cache static files like images and videos, etc.
 - Allows on-the-fly upgrades without downtime.
+- Handle SSL certificates.
 
 ### What is Forward Proxy?
 ![image](https://github.com/user-attachments/assets/d648b68f-c150-46ba-b580-5185df67c63f)
 - A forward proxy, also referred to as a “proxy server,” or simply a “proxy,” is a server that sits in front of one or more client computers and serves as a middleman between the clients and the internet.
 - The forward proxy receives the request before sending it from the client machine to the internet resource. On behalf of the client machine.
 - The forward proxy then sends the request to the internet and returns the response.
+- Multiple clients and one server.
+
+### What is Reverse Proxy?
+![image](https://github.com/user-attachments/assets/6087fda0-2980-445c-bcba-3b8a1cf8fb1d)
+![image](https://github.com/user-attachments/assets/043f7bfd-e502-4d50-a4e6-371ec4978269)
+
+- A reverse proxy is a server, app, or cloud service that acts as an intermediary between a client and one or more web servers.
+- A reverse proxy is a server that sits in front of web servers and forwards client requests to those web servers.
+- Reverse proxies are typically implemented to help increase security, performance, and reliability.
+
+
 
