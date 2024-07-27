@@ -47,6 +47,7 @@ Node.js supports two module systems for organizing and sharing code. These are
 In the **browser**, the event loop coordinates the execution of code between the **call stack, web APIs, and the callback queue**.
 Node.js, however, implements its own **Node.js event loop** that is different from the regular JavaScript event loop. 
 It doesn’t interact with the DOM but does deal with things like input and output (I/O), Database, File System, Network, and others.
+![image](https://github.com/user-attachments/assets/b335f081-0023-4518-be80-27c5efd6cd47)
 
 ### What is the Event Loop?
 - The event loop allows Node to perform **non-blocking I/O operations** even though JavaScript is **single-threaded**.
@@ -83,6 +84,25 @@ This is the second statement
 - When the timer set by the setTimeout function (in this case 1000 ms) runs out, the callback is sent to the event queue. The event loop on finding the call stack empty takes the task at the top of the event queue and sends it to the call stack. The callback function for the setTimeout function runs the instruction and “This is the second statement” is logged on the console and the task is popped from the stack.
 
 **Note**: In the above case, if the timeout was set to 0ms then also the statements will be displayed in the same order. This is because although the callback will be immediately sent to the event queue, the event loop won’t send it to the call stack unless the call stack is empty i.e. until the provided input script comes to an end.
+
+### Deep Drive in the Event loop
+![image](https://github.com/user-attachments/assets/9dee528a-8e17-4be0-8cdc-db1027872a48)
+- Request comes into **Event Queue** .
+- Event loops always check if any request comes into the event queue. And it picks a request in a FIFO manner.
+- The type of the request will be two type
+  - Blocking operation(Sync)
+  - Non-Blocking Operation(Async)
+- If it's a Non-Blocking Operation event loop process the operation and return response.
+- If it is a blocking operation it goes to the thread pool.
+![image](https://github.com/user-attachments/assets/9a014a0d-ae2e-4f95-b9dd-0e9551d57381)
+- The thread pool is a pool of threads. using a thread/worker node.js can work with Databases, File systems, Networks, etc.
+
+
+
+
+
+    
+
 
 
 ## 🚀 MVC pattern
