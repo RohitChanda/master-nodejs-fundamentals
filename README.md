@@ -51,6 +51,13 @@ Node.js supports two module systems for organizing and sharing code. These are
   - **View** : Handles layout and display.
   - **Controller** : Request-response handler
 
+## 🚀 Difference b/w a Framework and a Libary
+| Framework      | Libary |
+| -------------  | ------------- |
+|  A framework is a set of pre-written code that provides a structure for developing software applications                                       |  A library, on the other hand, is a collection of pre-written code that can be used to perform specific tasksl  |
+|  Framework defines the overall architecture of the application and provides a common set of conventions for building and maintaining the code  |Library is typically smaller in scope than a framework and is intended to be used as a tool to help developers accomplish specific tasks  |
+| The framework will tell you where to put your code                                                                                               |    your code calls the code in the library                      | 
+
 ## 🚀 Handle Cookies In Node.js
 Cookies are small data that are stored on a client side and sent to the client along with server requests. Cookies have various functionality, they can be used for maintaining sessions and adding user-specific features in your web app. For this, we will use **cookie-parser** module of npm which provides middleware for parsing of cookies.
 
