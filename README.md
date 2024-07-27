@@ -1,5 +1,5 @@
 # master-nodejs-fundamentals
-Master Node.js fundamentals
+Master Node.js Fundamentals
 
 
 ## Topics
@@ -270,3 +270,22 @@ fs.createReadStream("./sample.txt").pipe(
   
 console.log("File Compressed.");
 ```
+
+
+## What Is NGINX?
+- NGINX (pronounced "engine x") is an open-source web server software that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.
+- It provides HTTPS server capabilities and is mainly designed for maximum performance and stability. It also functions as a proxy server for email communications protocols, such as IMAP, POP3, and SMTP.
+- 
+### The NGINX Architecture
+By implementing event-driven, asynchronous, and non-blocking models, NGINX uses **master-slave architecture**.
+- **Workers**: process thousands of requests.
+- **Master**:  maintaining the number of configured worker processes.
+- **Proxy cache**: They have a cache loader and manager.
+
+### Benefits of NGINX
+Using NGINX comes with several benefits, including the following:
+- Reduces the waiting time to load a website. You don’t have to worry about high latency on your websites, therefore providing a good user experience. 
+- Speeds up performance by routing traffic to web servers in a way that increases the overall speed. This feature provides a good browsing experience to your users.
+- Acts as an inexpensive and robust load balancer.
+- Offers scalability and the ability to handle concurrent requests. 
+- Allows on-the-fly upgrades without downtime.
