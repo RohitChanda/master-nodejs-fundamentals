@@ -43,6 +43,47 @@ Node.js supports two module systems for organizing and sharing code. These are
 - CommonJS modules
 - ECMAScript modules
 
+## 🚀 Node.js Event loop
+In the **browser**, the event loop coordinates the execution of code between the **call stack, web APIs, and the callback queue**.
+Node.js, however, implements its own **Node.js event loop** that is different from the regular JavaScript event loop. 
+It doesn’t interact with the DOM but does deal with things like input and output (I/O), Database, File System, Network, and others.
+
+### What is the Event Loop?
+- The event loop allows Node to perform **non-blocking I/O operations** even though JavaScript is **single-threaded**.
+- It is done by assigning operations to the operating system whenever and wherever possible. 
+
+### Why Event Loop is important?
+Most operating systems(like windows, Linux, and mac) are multi-threaded and hence can handle multiple operations executing in the background. When one of these operations is completed, the kernel tells Node.js, and the respective callback assigned to that operation is added to the event queue which will eventually be executed. This will be explained further in detail later in this topic. 
+
+### Features of Event Loop:
+- An event loop is an endless loop, which waits for tasks, executes them and then sleeps until it receives more tasks.
+- The event loop **executes tasks from the event queue** only when the **call stack is empty** i.e. there is no ongoing task.
+- The event loop allows us to use callbacks and promises.
+
+### Example
+```js
+console.log("This is the first statement");
+  
+setTimeout(function(){
+    console.log("This is the second statement");
+}, 1000);
+  
+console.log("This is the third statement");
+```
+**Output** :
+```
+This is the first statement
+This is the third statement
+This is the second statement
+```
+**Explanation**: In the above example, 
+- the first console log statement is pushed to the call stack, and “This is the first statement” is logged on the console, and the task is popped from the stack.
+- Next, the setTimeout is pushed to the queue and the task is sent to the Operating system and the timer is set for the task. This task is then popped from the stack.
+- Next, the third console log statement is pushed to the call stack, and “This is the third statement” is logged on the console and the task is popped from the stack.
+- When the timer set by the setTimeout function (in this case 1000 ms) runs out, the callback is sent to the event queue. The event loop on finding the call stack empty takes the task at the top of the event queue and sends it to the call stack. The callback function for the setTimeout function runs the instruction and “This is the second statement” is logged on the console and the task is popped from the stack.
+
+**Note**: In the above case, if the timeout was set to 0ms then also the statements will be displayed in the same order. This is because although the callback will be immediately sent to the event queue, the event loop won’t send it to the call stack unless the call stack is empty i.e. until the provided input script comes to an end.
+
 
 ## 🚀 MVC pattern
 - MVC (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software's business logic and display.
@@ -84,7 +125,7 @@ res.cookie('my_cookie', 'cookie_value',  {expire : 24 * 60 * 60 * 1000 });
   ```js
   res.cookie('my_cookie' , 'cookie_value', { HttpOnly: true});
   ```
-- We can tell express to use https encrypted channel to exchange cookie data with secure flag.
+- We can tell express to use https encrypted channel to exchange cookie data with a secure flag.
   ```js
   res.cookie('my_cookie , 'cookie_value', { secure: true});
   ```
