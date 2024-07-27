@@ -273,9 +273,10 @@ console.log("File Compressed.");
 
 
 ## What Is NGINX?
-- NGINX (pronounced "engine x") is an open-source web server software that can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache.
+- NGINX (pronounced "engine x") is a powerful web server with a non-threaded, event-driven architecture. 
+- It is an open-source web server software that can also be used as a **reverse proxy**, load balancer, mail proxy, and HTTP cache.
 - It provides HTTPS server capabilities and is mainly designed for maximum performance and stability. It also functions as a proxy server for email communications protocols, such as IMAP, POP3, and SMTP.
-- 
+
 ### The NGINX Architecture
 By implementing event-driven, asynchronous, and non-blocking models, NGINX uses **master-slave architecture**.
 - **Workers**: process thousands of requests.
@@ -289,3 +290,10 @@ Using NGINX comes with several benefits, including the following:
 - Acts as an inexpensive and robust load balancer.
 - Offers scalability and the ability to handle concurrent requests. 
 - Allows on-the-fly upgrades without downtime.
+
+### What is Forward Proxy?
+![image](https://github.com/user-attachments/assets/d648b68f-c150-46ba-b580-5185df67c63f)
+- A forward proxy, also referred to as a “proxy server,” or simply a “proxy,” is a server that sits in front of one or more client computers and serves as a middleman between the clients and the internet.
+- The forward proxy receives the request before sending it from the client machine to the internet resource. On behalf of the client machine.
+- The forward proxy then sends the request to the internet and returns the response.
+
