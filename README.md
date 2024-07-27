@@ -49,6 +49,22 @@ Node.js, however, implements its own **Node.js event loop** that is different fr
 It doesn’t interact with the DOM but does deal with things like input and output (I/O), Database, File System, Network, and others.
 ![image](https://github.com/user-attachments/assets/b335f081-0023-4518-be80-27c5efd6cd47)
 
+**Single Threaded Event Loop Model Processing Steps:**
+* Clients Send request to Web Server.
+* Node.js Web Server internally maintains a Limited Thread pool to provide services to the Client Requests.
+* Node.js Web Server receives those requests and places them into a Queue. It is known as **Event Queue**.
+* Node.js Web Server internally has a Component, known as **Event Loop**. Why it got this name is that it uses indefinite loop to receive requests and process them.
+* Event Loop uses Single Thread only. It is main heart of Node.js Platform Processing Model.
+* Event Loop checks any Client Request is placed in Event Queue. If no, then wait for incoming requests for indefinitely.
+* If yes, then pick up one Client Request from Event Queue
+    * Starts process that Client Request
+    * If that Client Request Does Not requires any Blocking IO Operations, then process everything, prepare response and send it back to client.
+    * If that Client Request requires some Blocking IO Operations like interacting with Database, File System, External Services then it will follow different approach
+        * Checks Threads availability from Internal Thread Pool
+        * Picks up one Thread and assign this Client Request to that thread.
+        * That Thread is responsible for taking that request, process it, perform Blocking IO operations, prepare response and send it back to the Event Loop
+        * Event Loop in turn, sends that Response to the respective Client.
+
 ### What is the Event Loop?
 - The event loop allows Node to perform **non-blocking I/O operations** even though JavaScript is **single-threaded**.
 - It is done by assigning operations to the operating system whenever and wherever possible. 
@@ -85,20 +101,11 @@ This is the second statement
 
 **Note**: In the above case, if the timeout was set to 0ms then also the statements will be displayed in the same order. This is because although the callback will be immediately sent to the event queue, the event loop won’t send it to the call stack unless the call stack is empty i.e. until the provided input script comes to an end.
 
-### Deep Drive in the Event loop
-![image](https://github.com/user-attachments/assets/9dee528a-8e17-4be0-8cdc-db1027872a48)
-- Request comes into **Event Queue** .
-- Event loops always check if any request comes into the event queue. And it picks a request in a FIFO manner.
-- The type of the request will be two type
-  - Blocking operation(Sync)
-  - Non-Blocking Operation(Async)
-- If it's a Non-Blocking Operation event loop process the operation and return response.
-- If it is a blocking operation it goes to the thread pool.
-![image](https://github.com/user-attachments/assets/9a014a0d-ae2e-4f95-b9dd-0e9551d57381)
-- The thread pool is a pool of threads. using a thread/worker node.js can work with Databases, File systems, Networks, etc.
 
 
-
+### Phases of the Event loop
+![image](https://github.com/user-attachments/assets/585147a8-7d21-456a-bae7-cd9421a5629d)
+[Check More](https://www.geeksforgeeks.org/node-js-event-loop/#what-is-the-event-loop)
 
 
     
