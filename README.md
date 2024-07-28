@@ -373,8 +373,41 @@ var myvar;
  console.log(__filename); // D:\new Lesson\backend\master-nodejs-fundamentals\example_code.js
  ```
 
+### Q. What is Chrome v8 engine?
+V8 is a C++ based open-source JavaScript engine developed by Google.  it parses and executes JavaScript code while browsing with Chrome.
+
+It was originally designed for Google Chrome and Chromium-based browsers ( such as Brave ) in 2008, but it was later utilized to create Node.js for server-side coding.
+
+It provides a runtime environment for the execution of JavaScript code. The best part is that the JavaScript engine is completely independent of the browser in which it runs.
+
+### Q. Why is LIBUV needed in Node JS?
+libuv is a C library originally written for Node.js to abstract non-blocking I/O operations. 
+It provide the below features
+- It allows the CPU and other resources to be used simultaneously while still performing I/O operations, thereby resulting in efficient use of resources and network.
+- It facilitates an event-driven approach wherein I/O and other activities are performed using callback-based notifications.
+- It provides mechanisms to handle file system, DNS, network, child processes, pipes, signal handling, polling and streaming
+- It also includes a thread pool for offloading work for some things that can't be done asynchronously at the operating system level.
 
 
+### How V8 compiles JavaScript code ?
+There are basically three steps involved in processing the code:
+- Parsing the code
+- Compiling the code
+- Executing the code
+
+1. **Parsing Phase:** During the parsing phase, the code is broken down into its respective tokens(parts).
+   
+   ```const sum = 5 + 7```
+  Here const is a token, sum is a token, 5 is a token, ‘+’ is a token, and 7 is a token. After the code is broken down into tokens, it is given to the syntax parser which converts the code into an Abstract Syntax Tree (AST).
+2. **Compilation phase:** Compilation is the process of converting human-readable code to machine code. 
+  There are two ways to compile the code : 
+  - **Using an Interpreter:** The interpreter scans the code line by line and converts it into byte code. Example: Python
+  - **Using a Compiler:** The Compiler scans the entire document and compiles it into highly optimized byte code. Example: Java
+
+   The V8 engine uses both a compiler and an interpreter and follows just-in-time (JIT) compilation to speed up the execution. JIT compiling works by compiling small portions of code that are just about to be executed. This prevents long compilation time and the code  
+   being compiles is only that which is highly likely to run.
+
+3. **Execution Phase:** The byte code is executed by using the Memory heap and the Call Stack of the V8 engine’s runtime environment
 
 
 ## 🚀 MVC pattern
