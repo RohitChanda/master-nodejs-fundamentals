@@ -479,6 +479,69 @@ const addRandomNumber = async function(){
 
 addRandomNumber();
 ```
+### Q. What is typically the first argument passed to a callback handler?
+
+The first parameter of the callback is the error value. If the function hits an error, then they typically call the callback with the first parameter being an Error object.
+
+**Example:**
+```js
+/**
+ * Callback Handler
+ */
+const Division = (numerator, denominator, callback) => {
+    if (denominator === 0) {
+      callback(new Error('Divide by zero error!'));
+    } else {
+      callback(null, numerator / denominator);
+    }
+};
+
+// Function Call
+Division(5, 0, (err, result) => {
+  if (err) {
+    return console.log(err.message);
+  }
+  console.log(`Result: ${result}`);
+});
+```
+
+### Q. What are the timing features of Node.js?
+
+**1. setTimeout()**
+
+```setTimeout(callback, delay, args )```
+```js
+function printMessage(arg) {
+  console.log(`${arg}`);
+}
+setTimeout(printMessage, 1000, 'Display this Message after 1 seconds!');
+```
+
+**2. setImmediate()**
+
+```setImmediate(callback, args)```
+```js
+setImmediate(function (params) {
+   console.log('setImmediate() function running...', params);
+}, "Hello");
+```
+
+**3. setInterval()**
+
+```setInterval(callback, delay, args)```
+```js
+setInterval(function() {
+    console.log('Display this Message intervals of 1 seconds!');
+}, 1000);
+```
+
+
+
+
+
+
+
+
 
 
 
@@ -497,6 +560,26 @@ addRandomNumber();
 |  A framework is a set of pre-written code that provides a structure for developing software applications                                       |  A library, on the other hand, is a collection of pre-written code that can be used to perform specific tasksl  |
 |  Framework defines the overall architecture of the application and provides a common set of conventions for building and maintaining the code  |Library is typically smaller in scope than a framework and is intended to be used as a tool to help developers accomplish specific tasks  |
 | The framework will tell you where to put your code                                                                                               |    your code calls the code in the library                      | 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🚀 Handle Cookies In Node.js
 Cookies are small data that are stored on a client side and sent to the client along with server requests. Cookies have various functionality, they can be used for maintaining sessions and adding user-specific features in your web app. For this, we will use **cookie-parser** module of npm which provides middleware for parsing of cookies.
@@ -536,6 +619,20 @@ We can access Cookies via request object, ```req.cookies```.
  ```js
 res.clearCookie('my_cookie');
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 🚀 Cluster in Node
 Clusters of Node.js processes can be used to run **multiple instances** of Node.js that can distribute workloads among their application threads.
