@@ -1,6 +1,7 @@
 # master-nodejs-fundamentals
 Master Node.js Fundamentals
-
+## Related Interview Topics
+- [Node.js Interview Questions](https://github.com/Mohamed-Hashem/nodejs-interview-questions/blob/master/README.md#-3-nodejs-data-types)
 
 ## Topics
  - [Module System In Node.js](https://github.com/RohitChanda/master-nodejs-fundamentals/edit/main/README.md#module-system-in-nodejs) 
@@ -65,6 +66,63 @@ Like JS, there are two categories of data types in Node: Primitives and Objects.
  - Array
  - Buffer
 
+#### String data type
+Strings in Node.js are sequences of unicode characters. Strings can be wrapped in a single or double quotation marks.
+Javascript provide many functions to operate on string, like indexOf(), split(), substr(), length.
+
+**String functions:**
+|Function   | Description               |
+|-----------|---------------------------|
+|charAt()   |It is useful to find a specific character present in a string.|
+|Concat()   |It is useful to concat more than one string.|
+|indexOf()  |It is useful to get the index of a specified character or a part of the string.|
+|Match()    |It is useful to match multiple strings.|
+|Split()    |It is useful to split the string and return an array of string.|
+|Join()     |It is useful to join the array of strings and those are separated by comma (,) operator.|
+
+**Example:**
+
+```js
+/** 
+ * String Data Type
+ */
+const str1 = "Hello";
+const str2 = 'World';
+console.log("Concat Using Function :" , (str1.concat(str2)));
+```
+
+
+####  Number data type
+The number data type in Node.js is 64 bits floating point number both positive and negative. The parseInt() and parseFloat() functions are used to convert to number, if it fails to convert into a number then it returns `NaN`.
+
+#### BigInt data type
+A BigInt value, also sometimes just called a BigInt, is a bigint primitive.
+Its created by appending n to the end of an integer literal, or by calling the BigInt() function ( without the new operator ) and giving it an integer value or string value
+
+```js
+
+const num1 = 99n; //This is a BigInt
+console.log(num1);
+
+const num2 = BigInt('99'); // This is also a BigInt
+console.log(num2);
+
+const num3 = BigInt('99'); 
+
+console.log(num1 == num2) // true
+console.log(num2 == num3) // true
+console.log(typeof num1) // bigint
+```
+#### Boolean data type 
+- Boolean data type is a data type that has one of two possible values, either true or false. In programming, it is used in logical representation or to control program structure.
+- The **boolean()** function is used to convert any data type to a boolean value.
+  - According to the rules, false, 0, NaN, null, undefined, empty string evaluate to false.
+  -  other values evaluates to true.
+- Using the double exclamation mark ```!!``` in JavaScript we can convert a value to its corresponding boolean representation.
+```js
+console.log(Boolean(1)) //true
+console.log(!!1)  //true
+```
 
 
 
