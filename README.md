@@ -407,7 +407,81 @@ There are basically three steps involved in processing the code:
    The V8 engine uses both a compiler and an interpreter and follows just-in-time (JIT) compilation to speed up the execution. JIT compiling works by compiling small portions of code that are just about to be executed. This prevents long compilation time and the code  
    being compiles is only that which is highly likely to run.
 
-3. **Execution Phase:** The byte code is executed by using the Memory heap and the Call Stack of the V8 engine’s runtime environment
+3. **Execution Phase:** The byte code is executed by using the Memory heap and the Call Stack of the V8 engine’s runtime environment.
+
+
+
+### Q. What is callback hell in Node.js?
+The callback hell contains **complex nested callbacks**. Here, every callback takes an argument that is a result of the previous callbacks. In this way, the code structure looks like a pyramid, making it difficult to read and maintain. Also, if there is an error in one function, then all other functions are affected.
+
+An asynchronous function is one where some external activity must be completed before a result can be processed; it is "asynchronous" in the sense that there is an unpredictable amount of time before a result becomes available. Such functions require a callback function to handle errors and process the result.
+
+Example:
+```js
+/**
+ * Callback Hell
+ */
+getData(function(a){
+    getMoreData1(a, function(b){
+        getMoreData2(b, function(c){ 
+            getMoreData3(c, function(d){ 
+	            getMoreData4(d, function(e){ 
+		            ...
+		        });
+	        });
+        });
+    });
+});
+```
+### Q. How to avoid callback hell in Node.js?
+
+**1. Managing callbacks hell using promises:**
+
+Promises are alternative to callbacks while dealing with asynchronous code. Promises return the value of the result or an error exception. The core of the promises is the `.then()` function, which waits for the promise object to be returned.
+
+The `.then()` function takes two optional functions as arguments and depending on the state of the promise only one will ever be called. The first function is called when the promise if fulfilled (A successful result). The second function is called when the promise is rejected.
+
+**Example:**
+
+```js
+/**
+ * Promises
+ */
+const myPromise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Successful!");
+  }, 300);
+});
+```
+
+**2. Using Async Await:**
+
+Async await makes asynchronous code look like it's synchronous. This has only been possible because of the reintroduction of promises into node.js. Async-Await only works with functions that return a promise.
+
+**Example:**
+
+```js
+/**
+ * Async Await
+ */
+const getrandomnumber = function(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(Math.floor(Math.random() * 20));
+        }, 1000);
+    });
+}
+
+const addRandomNumber = async function(){
+    const sum = await getrandomnumber() + await getrandomnumber();
+    console.log(sum);
+}
+
+addRandomNumber();
+```
+
+
+
 
 
 ## 🚀 MVC pattern
