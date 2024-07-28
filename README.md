@@ -48,6 +48,22 @@ Url {
   href: 'http://localhost:8080/default?year=2022&month=september'
 }
 ```
+### What are the data types in Node.js?
+Like JS, there are two categories of data types in Node: Primitives and Objects.
+
+1. Primitives:
+ - String
+ - Number
+ - BigInt
+ - Boolean
+ - Undefined
+ - Null
+ - Symbol
+
+2. Objects:
+ - Function
+ - Array
+ - Buffer
 
 
 
