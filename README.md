@@ -5,7 +5,8 @@ Master Node.js Fundamentals
 ## Topics
  - [Module System In Node.js](https://github.com/RohitChanda/master-nodejs-fundamentals/edit/main/README.md#module-system-in-nodejs) 
 
-## 🚀 What is Node.js?
+## 🚀 Introduction
+### What is Node.js?
 - Node.js is an open-source server-side runtime environment built on Chrome's V8 JavaScript engine. 
 - It provides an event-driven, non-blocking (asynchronous) I/O and cross-platform runtime environment for building highly scalable server-side applications using JavaScript.
 
@@ -19,7 +20,38 @@ Master Node.js Fundamentals
 - Single Threaded but Highly Scalable
 - Node.js library uses JavaScript
 - There is an Active and vibrant community for the Node.js framework
-- No Buffering 
+- No Buffering
+
+### Explain the concept of URL module in Node.js
+The URL module in Node.js splits up a web address into readable parts. Use require() to include the module. Then parse an address with the ```url.parse()``` method, and it will return a URL object with each part of the address as properties.<br/>
+**Example**:
+```js
+const url = require("url");
+const adr = 'http://localhost:8080/default?year=2022&month=september';
+const q = url.parse(adr);
+console.log(q)
+```
+**Output** :
+```
+Url {
+  protocol: 'http:',
+  slashes: true,
+  auth: null,
+  host: 'localhost:8080',
+  port: '8080',
+  hostname: 'localhost',
+  hash: null,
+  search: '?year=2022&month=september',
+  query: 'year=2022&month=september',
+  pathname: '/default',
+  path: '/default?year=2022&month=september',
+  href: 'http://localhost:8080/default?year=2022&month=september'
+}
+```
+
+
+
+
 
 ## 🚀 Module System in Nodejs
 In simple terms, a module is a piece of reusable JavaScript code. It could be a .js file or a directory containing .js files. You can export the content of these files and use them in other files.
