@@ -313,7 +313,28 @@ Processing nextTick cb 10
 ...
 ```
 - Unlike process.nextTick(), recursive calls to setImmediate() won't block the event loop, because every recursive call is executed only on the next event loop iteration.
+###  Reactor Pattern in Node.js?
 
+**Reactor Pattern** is used to avoid the blocking of the Input/Output operations. It provides us with a handler that is associated with I/O operations. When the I/O requests are to be generated, they get submitted to a demultiplexer, which handles concurrency in avoiding the blocking of the I/O mode and collects the requests in form of an event and queues those events.
+
+**There are two ways in which I/O operations are performed:**
+
+**1. Blocking I/O:** Application will make a function call and pause its execution at a point until the data is received. It is called as "Synchronous".
+
+**2. Non-Blocking I/O:** Application will make a function call, and, without waiting for the results it continues its execution. It is called as "Asynchronous".
+
+![image](https://github.com/user-attachments/assets/055799bf-556b-4e61-bfd1-b2b63803c0fd)
+
+
+**Reactor Pattern comprises of:**
+
+**1. Resources:** They are shared by multiple applications for I/O operations, generally slower in executions.
+
+**2. Synchronous Event De-multiplexer/Event Notifier:** This uses Event Loop for blocking on all resources. When a set of I/O operations completes, the Event De-multiplexer pushes the new events into the Event Queue.
+
+**3. Event Loop and Event Queue:** Event Queue queues up the new events that occurred along with its event-handler, pair.
+
+**4. Request Handler/Application:** This is, generally, the application that provides the handler to be executed for registered events on resources.
 
 
 ## 🚀 MVC pattern
