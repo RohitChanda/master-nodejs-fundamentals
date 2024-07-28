@@ -123,7 +123,24 @@ console.log(typeof num1) // bigint
 console.log(Boolean(1)) //true
 console.log(!!1)  //true
 ```
+#### Symbol data type 
+Symbol is an immutable primitive value that is unique. It\'s a very peculiar data type. Once you create a symbol, its value is kept private and for internal use.
+**Example:**
+```js
+/**
+ * Symbol Data Type
+ */
+const NAME = Symbol()
+const person = {
+  [NAME]: 'Ritika Bhavsar'
+}
 
+person[NAME] // 'Ritika Bhavsar'
+```
+
+#### function in Node.js
+Functions are **first class citizens** in Node\'s JavaScript, similar to the browser\'s JavaScript.
+A function can have attributes and properties also. It can be treated like a class in JavaScript.
 
 
 
