@@ -5,7 +5,21 @@ Master Node.js Fundamentals
 ## Topics
  - [Module System In Node.js](https://github.com/RohitChanda/master-nodejs-fundamentals/edit/main/README.md#module-system-in-nodejs) 
 
+## 🚀 What is Node.js?
+- Node.js is an open-source server-side runtime environment built on Chrome's V8 JavaScript engine. 
+- It provides an event-driven, non-blocking (asynchronous) I/O and cross-platform runtime environment for building highly scalable server-side applications using JavaScript.
 
+###  What is Node.js Process Model?
+- Node.js runs in a single process and the application code runs in a single thread and thereby needs fewer resources than other platforms.
+- All the user requests to your web application will be handled by a single thread and all the I/O work or long running job is performed asynchronously for a particular request. So, this single thread doesn't have to wait for the request to complete and is free to handle the next request. When asynchronous I/O work is completed, the request is processed further and the response is sent.
+
+### What are the key features of Node.js?
+- Asynchronous and Event driven
+- Fast in Code execution
+- Single Threaded but Highly Scalable
+- Node.js library uses JavaScript
+- There is an Active and vibrant community for the Node.js framework
+- No Buffering 
 
 ## 🚀 Module System in Nodejs
 In simple terms, a module is a piece of reusable JavaScript code. It could be a .js file or a directory containing .js files. You can export the content of these files and use them in other files.
