@@ -555,8 +555,24 @@ setInterval(function() {
 }, 1000);
 ```
 
+### Describe the event-driven programing in Node.js
+Event-driven programming, a hallmark of Node.js, uses an event, listener, and emitter architecture to handle asynchronous tasks. This design centers around events and how they trigger actions in the attached listeners.
 
+**Core Components:**
+- **Event Emitter:** Acts as the event registry and dispatcher, letting objects register interest in particular events and emit these events when they occur.
+- **Event Handler (Listener):** Associates with a particular event through registration. These callback functions will be asynchronously carried out when a matching event is emitted.
 
+Code Example: Event Emitter and Handlers
+Here is the Node.js code:
+```js
+const { EventEmitter } = require('events');
+const emitter = new EventEmitter();
+emitter.on('event-name', (eventArgs) => {
+    console.log(`Event-name was emitted with arguments: ${eventArgs}`);
+});
+
+emitter.emit('event-name', 'Some Payload');
+```
 
 
 
@@ -688,14 +704,23 @@ Cluster supports two types of load distribution:
 - The main process assigns the port to a child process and child process itself listen the port.
 
 
-### Q. Since node is a single-threaded process, how to make use of all CPUs?
+### Q. Since node is a single-threaded process, how to make use of all CPUs ?
 - Node.js does support forking multiple processes using the cluster module ( which are executed on different cores ).
 - It is important to know that the state is not shared between the master and forked process.
 
 [For code example check the cluster module section](https://github.com/RohitChanda/master-nodejs-fundamentals/edit/master/README.md#-cluster-in-node)
 
-### Q. If Node.js is single threaded then how it handles concurrency?
+### Q. If Node.js is single threaded then how it handles concurrency ?
 Node js uses an event loop to maintain concurrency and perform non-blocking I/O operations.
+
+### Q. How does Node.js handle child threads?
+Node.js employs event-driven architecture and non-blocking I/O for efficiency.
+
+While Node.js operates off a single main thread, it can harness the full power of **multi-core system**s by **launching child threads** for specific tasks, such as file compression or image processing.
+
+To manage these child threads, Node.js uses a combination of:
+- A thread pool, powered by the libuv library.
+- Worker threads for dedicated, offloaded computation.
 
 ### Q. How does call stack work inside Node.js?
 As soon as Node js starts, it initializes an event loop. The event loop works on a queue (which is called an event queue) and performs tasks in FIFO (First In First Out) order.
@@ -930,7 +955,7 @@ const fs = require("fs");
 const zlib = require('zlib');
 
 // fs read stream --(pipe)--> zip --(pipe)-> fs write stream
-// so when the file is reading ,in that time we will automatically converted into zip and write into another file
+// so when the file is reading ,in that time we will automatically convert into zip and write into another file
 fs.createReadStream("./sample.txt").pipe(
   zlib.createGzip().pipe(fs.createWriteStream("./destination.txt"))
 );
