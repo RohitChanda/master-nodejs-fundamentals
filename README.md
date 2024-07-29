@@ -709,7 +709,30 @@ Here,
 - When the function is called, it starts consoling the statement inside it but before consoling the whole statement it encounters another function add(n,n) and suspends its current execution, and pushes the add function into the top of the call stack.
 - Now the function will return the addition a+b and then popped out from the stack and now the previously suspended function will start running and will log the output to console and then this function too will get pop from the stack and now the stack is empty. So this is how a call stack works.
 
+### Q. How to kill child processes that spawn their own child processes in Node.js?
+If a child process in Node.js spawns its child processes, the kill() method will not kill the child process\'s child processes. For example, if I start a process that starts it\'s own child processes via the child_process module, killing that child process will not make my program to quit.
 
+```js
+const spawn = require('child_process').spawn;
+const child = spawn('my-command');
+
+child.kill();
+```
+
+The program above will not quit if `my-command` spins up some more processes.
+
+**PID range hack:**
+
+We can start child processes with {detached: true} option so those processes will not be attached to the main process but will go to a new group of processes. Then using the ```process.kill(-pid)``` method on the main process we can kill all processes that are in the same group of a child process with the same pid group. In my case, I only have one process in this group.
+
+```js
+const spawn = require('child_process').spawn;
+const child = spawn('my-command', {detached: true});
+
+process.kill(-child.pid);
+```
+
+Please note - before pid. This converts a pid to a group of pids for process kill() method.
 
 
 
