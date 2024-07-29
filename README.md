@@ -182,7 +182,7 @@ Node.js supports two module systems for organizing and sharing code. These are
 - ECMAScript modules
 
 <div align="right">
-    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+    <b><a href="##topics">↥ back to top</a></b>
 </div>
 
 ## 🚀 NODE.JS ARCHITECTURE
@@ -630,7 +630,7 @@ res.clearCookie('my_cookie');
 ```
 
 <div align="right">
-    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+    <b><a href="#topics">↥ back to top</a></b>
 </div>
 
 ## 🚀 NODE.JS MULTITHREADING
@@ -660,7 +660,7 @@ Moreover, Node.js has an optimized design that utilizes both JavaScript and C++ 
 To explain it practically, let's assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
 
 <div align="right">
-    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+    <b><a href="#topics">↥ back to top</a></b>
 </div>
 
 
