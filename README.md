@@ -673,6 +673,11 @@ Cluster supports two types of load distribution:
 - The main process assigns the port to a child process and child process itself listen the port.
 
 
+### Q. Since node is a single threaded process, how to make use of all CPUs?
+- Node.js does support forking multiple processes using the cluster module ( which are executed on different cores ).
+- It is important to know that the state is not shared between the master and forked process.
+[For code example check the cluster module section]()
+
 <div align="right">
     <b><a href="#topics">↥ back to top</a></b>
 </div>
