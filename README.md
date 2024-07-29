@@ -657,12 +657,25 @@ Yes, it is true that Node.js processes all requests on a single thread. But it i
 
 Moreover, Node.js has an optimized design that utilizes both JavaScript and C++ to guarantee maximum performance. JavaScript executes on the server-side by the Google Chrome v8 engine. The libuv library takes care of the non-sequential I/O via background workers.
 
-To explain it practically, let's assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
+To explain it practically, let's assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on the event loop thread to pass the result back to the user.
+
+### Q. How does Node.js support multi-processor platforms, and does it fully utilize all processor resources?
+Since Node.js is by default a single thread application, it will run on a single processor core and will not take full advantage of multiple core resources. 
+
+However, Node.js provides support for deployment on multiple-core systems, to take greater advantage of the hardware. 
+
+The Cluster module is one of the core Node.js modules and it allows running multiple Node.js worker processes that will share the same port.
+
+The cluster module helps to spawn new processes on the operating system. Each process works independently, so you cannot use a shared state between child processes. Each process communicates with the main process by IPC and the pass server handles back and forth.
+
+Cluster supports two types of load distribution:
+- The main process listens on a port, accepts a new connection, and assigns it to a child process in a round-robin fashion.
+- The main process assigns the port to a child process and child process itself listen the port.
+
 
 <div align="right">
     <b><a href="#topics">↥ back to top</a></b>
 </div>
-
 
 
 ## 🚀 Cluster in Node
