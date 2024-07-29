@@ -17,12 +17,27 @@ Master Node.js Fundamentals
 - All the user requests to your web application will be handled by a single thread and all the I/O work or long running job is performed asynchronously for a particular request. So, this single thread doesn't have to wait for the request to complete and is free to handle the next request. When asynchronous I/O work is completed, the request is processed further and the response is sent.
 
 ### What are the key features of Node.js?
-- Asynchronous and Event driven
+- Asynchronous and Event-driven
 - Fast in Code execution
+- **NPM:** A vast package ecosystem simplifies module management and deployment.
 - Single Threaded but Highly Scalable
-- Node.js library uses JavaScript
+- **Full-Stack JavaScript:** Allows for unified server and client-side code in JavaScript.
 - There is an Active and vibrant community for the Node.js framework
 - No Buffering
+
+### What are the use cases of Nodejs?
+**1. Data Streaming:** Suited for real-time streaming of audio, video, and lightweight data.
+
+**2. API Servers:** Ideal for building fast, scalable, and data-intensive applications.
+
+**3. Microservices:** Its module-oriented design facilitates the development of decoupled, independently scalable services.
+
+**4. Single Page Applications:** Often used with frameworks like Angular, React, or Vue to craft robust, server-side backends.
+
+**5. Chat Applications:** Its real-time capabilities are advantageous in building instant messaging systems.
+
+**6. Internet of Things (IoT):** Provides a lightweight environment for running applications on constrained devices like Raspberry Pi.
+
 
 ### Explain the concept of URL module in Node.js
 The URL module in Node.js splits up a web address into readable parts. Use require() to include the module. Then parse an address with the ```url.parse()``` method, and it will return a URL object with each part of the address as properties.<br/>
