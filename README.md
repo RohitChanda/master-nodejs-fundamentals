@@ -180,6 +180,11 @@ Install a package using the command: npm install <name-of-package>
 Node.js supports two module systems for organizing and sharing code. These are
 - CommonJS modules
 - ECMAScript modules
+
+<div align="right">
+    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+</div>
+
 ## 🚀 NODE.JS ARCHITECTURE
 ###  Node.js Event loop
 In the **browser**, the event loop coordinates the execution of code between the **call stack, web APIs, and the callback queue**.
@@ -545,7 +550,9 @@ setInterval(function() {
 
 
 
-
+<div align="right">
+    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+</div>
 
 ## 🚀 MVC pattern
 - MVC (Model-View-Controller) is a pattern in software design commonly used to implement user interfaces, data, and controlling logic. It emphasizes a separation between the software's business logic and display.
@@ -579,7 +586,9 @@ setInterval(function() {
 
 
 
-
+<div align="right">
+    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+</div>
 
 ## 🚀 Handle Cookies In Node.js
 Cookies are small data that are stored on a client side and sent to the client along with server requests. Cookies have various functionality, they can be used for maintaining sessions and adding user-specific features in your web app. For this, we will use **cookie-parser** module of npm which provides middleware for parsing of cookies.
@@ -620,17 +629,39 @@ We can access Cookies via request object, ```req.cookies```.
 res.clearCookie('my_cookie');
 ```
 
+<div align="right">
+    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+</div>
+
+## 🚀 NODE.JS MULTITHREADING
+
+### Q. What is a Single-Threaded Process?
+A single-threaded process is the execution of programmed instructions in a single sequence. Having said that, if an application has the following set of instructions:
+
+- Instruction A
+- Instruction B
+- Instruction C
+
+If these set of instructions are executed in a single-threaded process, the execution would look like the following:
+![image](https://github.com/user-attachments/assets/c9913f0c-4890-4913-8435-ea1ea9009223)
 
 
+### Q. What is a Multi-threaded Process?
+A multi-threaded process is a program that can run multiple threads at the same time, sharing resources and executing independently
 
+Therefore, instructions won’t have to wait to execute unless multiple instructions are grouped within different sequences.
+![image](https://github.com/user-attachments/assets/6090b303-924f-4332-a6ff-ae744ae0dd15)
 
+### Q. Is Node.js entirely based on a single-thread?
+Yes, it is true that Node.js processes all requests on a single thread. But it is just a part of the theory behind Node.js design. In fact, more than the single thread mechanism, **it makes use of events and callbacks to handle a large no. of requests asynchronously**.
 
+Moreover, Node.js has an optimized design that utilizes both JavaScript and C++ to guarantee maximum performance. JavaScript executes on the server-side by the Google Chrome v8 engine. The libuv library takes care of the non-sequential I/O via background workers.
 
+To explain it practically, let's assume there are 100s of requests lined up in Node.js queue. As per design, the main thread of Node.js event loop will receive all of them and forwards to background workers for execution. Once the workers finish processing requests, the registered callbacks get notified on event loop thread to pass the result back to the user.
 
-
-
-
-
+<div align="right">
+    <b><a href="#master-nodejs-fundamentals">↥ back to top</a></b>
+</div>
 
 
 
