@@ -743,6 +743,13 @@ A multi-threaded process is a program that can run multiple threads at the same 
 Therefore, instructions won’t have to wait to execute unless multiple instructions are grouped within different sequences.
 ![image](https://github.com/user-attachments/assets/6090b303-924f-4332-a6ff-ae744ae0dd15)
 
+
+***Note:***: 
+
+Single-threaded servers like Node.js operate on a single thread, executing one operation at a time. Node.js, being non-blocking and event-driven, can handle many concurrent connections with minimal overhead.
+
+Conversely, multi-threaded servers like Java can execute multiple operations concurrently by initiating additional threads. This ability makes them more suitable for CPU-intensive tasks. However, the overhead associated with creating and managing threads can reduce efficiency when dealing with a large number of concurrent connections.
+
 ### Q. Is Node.js entirely based on a single-thread?
 Yes, it is true that Node.js processes all requests on a single thread. But it is just a part of the theory behind Node.js design. In fact, more than the single thread mechanism, **it makes use of events and callbacks to handle a large no. of requests asynchronously**.
 
