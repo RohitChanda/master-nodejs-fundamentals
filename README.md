@@ -196,6 +196,66 @@ Node.js supports two module systems for organizing and sharing code. These are
 - CommonJS modules
 - ECMAScript modules
 
+#### CommonJS modules
+By default, Node.js treats JavaScript code as CommonJS modules. Because of this, CommonJS modules are characterized by the ```require``` statement for module imports and ```module.exports``` for module exports.
+
+For example, this is a CommonJS module that exports two functions:
+
+```js
+module.exports.add = function(a, b) {
+        return a + b;
+} 
+
+module.exports.subtract = function(a, b) {
+        return a - b;
+} 
+```
+We can also import the public functions into another Node.js script using require, just as we do here:
+
+```js
+const {add, subtract} = require('./util')
+
+console.log(add(5, 5)) // 10
+console.log(subtract(10, 5)) // 5
+```
+
+#### ECMAScript modules
+On the other hand, library authors can also simply enable ES modules in a Node.js package by changing the file extensions from ```.js``` to ```.mjs``` ,For example, here’s a simple ES module (with an .mjs extension) exporting two functions for public use:
+
+```js
+// util.mjs
+
+export function add(a, b) {
+        return a + b;
+}
+
+export function subtract(a, b) {
+        return a - b;
+}
+```
+
+We can then import both functions using the import statement:
+
+```js
+// app.mjs
+
+import {add, subtract} from './util.mjs'
+
+console.log(add(5, 5)) // 10
+console.log(subtract(10, 5)) // 5
+```
+
+***Note***: Another way to enable ES modules in your project can be by adding a "type: module" field inside the nearest package.json file (the same folder as the package you’re making):With that inclusion, Node.js treats all files inside that package as ES modules, and you won’t have to change the file to a .mjs extension.
+
+```js
+{
+  "name": "my-library",
+  "version": "1.0.0",
+  "type": "module",
+  // ...
+}
+```
+
 <div align="right">
     <b><a href="##topics">↥ back to top</a></b>
 </div>
