@@ -870,6 +870,7 @@ const cluster = require("cluster");
 const express = require("express");
 const os = require("os");
 
+// * To get the no of CPUs or cores in our processor
 const numCpu = os.cpus().length;
 // const numCpu = os.availableParallelism(); //both are same
 
