@@ -848,6 +848,20 @@ Please note - before pid. This converts a pid to a group of pids for process kil
     <b><a href="#topics">↥ back to top</a></b>
 </div>
 
+## 🚀 Node Child Process
+The Node.js child_process module allows you to create and control child processes, enabling you to execute system commands, run scripts, and perform other operations outside the main Node.js process.
+
+### Child Process Module
+The child_process module provides several methods to create and control child processes, each serving different purposes depending on the level of control and interaction you need with the spawned process.
+
+**exec()**: Executes a command in a shell and buffers the output.
+
+**execFile()**: Directly executes a file without a shell, which is more efficient than exec() for simple scripts or commands.
+
+**spawn()**: Launches a new process with a given command, providing streams for stdin, stdout, and stderr.
+
+**fork()**: A specialized version of spawn() specifically designed to spawn new Node.js processes and establish a communication channel between the parent and child.
+
 
 ## 🚀 Cluster in Node
 Clusters of Node.js processes can be used to run **multiple instances** of Node.js that can distribute workloads among their application threads.
