@@ -9,6 +9,7 @@ Node-schedule offers you the flexibility of scheduling jobs using cron-style sch
 ## Cron Job
 With cron-style scheduling, you can pass a cron expression to specify when the job is triggered and the expression is parsed using cron-parser:
 
+```
 *    *    *    *    *    *
 ┬    ┬    ┬    ┬    ┬    ┬
 │    │    │    │    │    │
@@ -18,6 +19,7 @@ With cron-style scheduling, you can pass a cron expression to specify when the j
 │    │    └─────────────── hour (0 - 23)
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, OPTIONAL)
+```
 
 ```js
 // after every one minutes
