@@ -41,3 +41,14 @@ schedule.scheduleJob(someDate, () => {
     console.log('Job ran at @', new Date().toString());
 });
 ```
+
+There are many package available to schedule job in Node.js:
+
+- Agenda
+- Node-schedule
+- Node-cron
+- Bree
+- Cron
+- Bull
+- Bottleneck
+
